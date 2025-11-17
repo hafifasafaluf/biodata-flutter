@@ -1,7 +1,14 @@
-import 'package:biodata/helpers/user_info.dart';
+import 'dart:convert';
+import 'package:biodata/helpers/api.dart';
+import 'package:biodata/helpers/api_url.dart';
+import 'package:biodata/model/login.dart';
 
-class BiodataBloc {
-  static Future biodata() async {
-    await UserInfo().biodata();
+class LoginBloc {
+  static Future<Login> login({String? email, String? password}) async {
+    String apiUrl = ApiUrl.login;
+    var body = {"email": email, "password": password};
+    var response = await Api().post(apiUrl, body);
+    var jsonObj = json.decode(response.body);
+    return Login.fromJson(jsonObj);
   }
 }

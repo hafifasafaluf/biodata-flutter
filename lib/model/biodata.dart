@@ -18,16 +18,18 @@ class Biodata {
   });
 
   factory Biodata.fromJson(Map<String, dynamic> obj) {
+    final dataMap = (obj['data'] is Map<String, dynamic>)
+        ? obj['data'] as Map<String, dynamic>
+        : obj;
+
     return Biodata(
       code: obj['code'],
       status: obj['status'],
-      id: obj['data']['id'] == null
-          ? null
-          : int.tryParse(obj['data']['id'].toString()),
-      nama: obj['data']['nama'],
-      alamat: obj['data']['alamat'],
-      tanggalLahir: obj['data']['tanggal_lahir'],
-      nomorTelepon: obj['data']['nomor_telepon'],
+      id: dataMap['id'] == null ? null : int.tryParse(dataMap['id'].toString()),
+      nama: dataMap['nama'],
+      alamat: dataMap['alamat'],
+      tanggalLahir: dataMap['tanggal_lahir'],
+      nomorTelepon: dataMap['nomor_telepon'],
     );
   }
 }

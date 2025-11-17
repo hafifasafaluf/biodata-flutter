@@ -1,19 +1,19 @@
-class Biodata {
+class Login {
   int? code;
   bool? status;
   String? token;
-  int? biodataID;
-  String? biodataNama;
-  Biodata({this.code, this.status, this.token, this.biodataID, this.biodataNama});
-  factory Biodata.fromJson(Map<String, dynamic> obj) {
-    return Biodata(
+  int? userID;
+  String? userEmail;
+  Login({this.code, this.status, this.token, this.userID, this.userEmail});
+  factory Login.fromJson(Map<String, dynamic> obj) {
+    return Login(
       code: obj['code'],
       status: obj['status'],
       token: obj['data']['token'],
-      biodataID: obj['data']['biodata']['id'] == null
+      userID: obj['data']['user']['id'] == null
           ? null
-          : int.tryParse(obj['data']['biodata']['id'].toString()),
-      biodataNama: obj['data']['biodata']['nama'],
+          : int.tryParse(obj['data']['user']['id'].toString()),
+      userEmail: obj['data']['user']['email'],
     );
   }
 

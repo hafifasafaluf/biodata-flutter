@@ -1,8 +1,8 @@
-class BiodataException implements Exception {
+class AppException implements Exception {
   final _message;
   final _prefix;
 
-  BiodataException([this._message, this._prefix]);
+  AppException([this._message, this._prefix]);
 
   @override
   String toString() {
@@ -10,24 +10,24 @@ class BiodataException implements Exception {
   }
 }
 
-class FetchDataBiodataException extends BiodataException {
-  FetchDataBiodataException([String? message])
-      : super(message, "Error During Biodata Communication: ");
+class FetchDataException extends AppException {
+  FetchDataException([String? message])
+      : super(message, "Error During Communication: ");
 }
 
-class BadRequestBiodataException extends BiodataException {
-  BadRequestBiodataException([message]) : super(message, "Invalid Biodata Request: ");
+class BadRequestException extends AppException {
+  BadRequestException([message]) : super(message, "Invalid Request: ");
 }
 
-class UnauthorisedBiodataException extends BiodataException {
-  UnauthorisedBiodataException([message]) : super(message, "Unauthorised Biodata: ");
+class UnauthorisedException extends AppException {
+  UnauthorisedException([message]) : super(message, "Unauthorised: ");
 }
 
-class UnprocessableBiodataEntityException extends BiodataException {
-  UnprocessableBiodataEntityException([message])
-      : super(message, "Unprocessable Biodata Entity: ");
+class UnprocessableEntityException extends AppException {
+  UnprocessableEntityException([message])
+      : super(message, "Unprocessable Entity: ");
 }
 
-class InvalidBiodataInputException extends BiodataException {
-  InvalidBiodataInputException([String? message]) : super(message, "Invalid Biodata Input: ");
+class InvalidInputException extends AppException {
+  InvalidInputException([String? message]) : super(message, "Invalid Input: ");
 }
